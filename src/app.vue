@@ -10,8 +10,6 @@
 
 <script lang="ts" setup>
   import { onMounted } from 'vue';
-  import Footer from '@/components/footer.vue';
-  import Header from '@/components/header.vue';
 
   onMounted(async () => {});
 
