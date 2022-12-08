@@ -1,0 +1,51 @@
+$z-layers: (
+  "modal": (
+    "base":           500,
+    "close":          100,
+    "header":          50,
+    "footer":          10
+  ),
+  "loading": (
+    "mask": 1000,
+    "animation": 1001,
+  ),
+  "header": (
+    "base": 900,
+    "search": 5,
+  ),
+  // 页面悬浮层
+  "float": (
+    // 大于header
+    "base": 910
+  ),
+  "toast": 1100,
+  "alert": 2000,
+  "top": 9999
+);
+
+@function map-has-nested-keys($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+    $map: map-get($map, $key);
+  }
+
+  @return true;
+}
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+@function z($layers...) {
+  @if not map-has-nested-keys($z-layers, $layers...) {
+    @error "No layer found for `#{inspect($layers)}` in $z-layers map. Property omitted.";
+  }
+
+  @return map-deep-get($z-layers, $layers...);
+}

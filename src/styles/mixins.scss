@@ -1,0 +1,23 @@
+@mixin text-overflow($row: 1) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+}
+
+/* iOS 安全区域 兼容 */
+@mixin padding-bottom-safe-area($padding: 0) {
+  padding-bottom: max(#{$padding}, var(--safe-area-inset-bottom));
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    content: '';
+  }
+}

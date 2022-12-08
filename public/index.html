@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="author" content="TerraCycle">
+    <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow" />
+
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <script>
+      (function() {
+        function setHtmlFontSize() {
+          const minWidth = 375;  // 小于此大小，也按照此大小显示
+          const maxWidth = 500; // 超过这个大小按照PC端来显示
+          const pcWidth = 480; // PC 端显示大小计算尺寸
+          let clientWidth = document.documentElement.clientWidth;
+          clientWidth = clientWidth < minWidth ? minWidth : (clientWidth > maxWidth ? pcWidth : clientWidth)
+          document.documentElement.style.fontSize = clientWidth / 30 + 'px'
+        }
+        setHtmlFontSize();
+        window.addEventListener('resize', setHtmlFontSize)
+      })()
+
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

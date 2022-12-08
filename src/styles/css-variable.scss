@@ -1,0 +1,11 @@
+:root {
+  --safe-area-inset-bottom: 0;
+
+  @supports (bottom: constant(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+  }
+
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
+  }
+}

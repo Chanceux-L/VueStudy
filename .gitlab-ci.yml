@@ -1,0 +1,44 @@
+stages:
+  - test
+  - deploy
+
+cache:
+  key: one-key-to-rule-them-all
+  paths:
+    - ci_reports/
+    - node_modules/
+    - .npm/
+
+before_script:
+  - asdf install
+  - pnpm install
+
+test:
+  script:
+    - pnpm run lint
+    - pnpm run lint:ts
+    - pnpm run lint:style
+  except:
+    - develop
+    - staging
+    - master
+
+# deploy_staging:
+#   stage: deploy
+#   script:
+#     - pnpm staging
+#     - pnpm deploy:staging
+#   only:
+#     - staging
+#   tags:
+#     - nuc-runner
+
+# deploy_production:
+#   stage: deploy
+#   script:
+#     - pnpm build
+#     - pnpm deploy:production
+#   only:
+#     - master
+#   tags:
+#     - nuc-runner

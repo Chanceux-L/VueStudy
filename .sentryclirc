@@ -1,0 +1,7 @@
+[defaults]
+url = https://sentry.beansmile-dev.com/
+org = beansmile
+project =
+
+[auth]
+token=
