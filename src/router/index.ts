@@ -2,9 +2,14 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/communicate',
+    name: 'communicate',
+    component: require('@/views/communicate').default
+  },
+  {
     path: '/:pathMatch(.*)',
     name: '404',
-    component: require('@/views/404.vue').default,
+    component: require('@/views/404.vue').default
   },
 ].filter(Boolean) as Array<RouteRecordRaw>;
 

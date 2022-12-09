@@ -45,3 +45,7 @@ img {
 .pointer {
   cursor: pointer;
 }
+
+.disabled {
+  pointer-events: none;
+}
